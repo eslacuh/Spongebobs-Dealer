@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spongebob’s Dealer</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #111;
+  color: #fff;
+}
+
+header {
+  background: linear-gradient(90deg, #000, #d4af37);
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  color: #ffcc00;
+}
+
+nav {
+  background: #000;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: #ffcc00;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+.hero {
+  background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70') no-repeat center;
+  background-size: cover;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.container {
+  padding: 20px;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+.cars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.car-card {
+  background: #222;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.car-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.price {
+  color: gold;
+  font-weight: bold;
+}
+
+button {
+  background: gold;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #ffcc00;
+}
+
+.contact {
+  background: #000;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #000;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🚗 Spongebob’s Dealer</h1>
+  <p>Luxury Cars. Golden Deals.</p>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#inventory">Inventory</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+  Find Your Dream Car Today
+</div>
+
+<div class="container" id="inventory">
+  <h2>Search Inventory</h2>
+  <input type="text" id="search" placeholder="Search cars..." onkeyup="searchCars()">
+
+  <div class="cars" id="carList">
+
+    <div class="car-card" data-name="Toyota Camry">
+      <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d">
+      <h3>2022 Toyota Camry</h3>
+      <p>$24,995</p>
+      <button onclick="bookTestDrive('Toyota Camry')">Schedule Test Drive</button>
+    </div>
+
+    <div class="car-card" data-name="Ford Mustang">
+      <img src="https://images.unsplash.com/photo-1549924231-f129b911e442">
+      <h3>2021 Ford Mustang</h3>
+      <p>$32,500</p>
+      <button onclick="bookTestDrive('Ford Mustang')">Schedule Test Drive</button>
+    </div>
+
+    <div class="car-card" data-name="Tesla Model 3">
+      <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888">
+      <h3>2023 Tesla Model 3</h3>
+      <p>$38,900</p>
+      <button onclick="bookTestDrive('Tesla Model 3')">Schedule Test Drive</button>
+    </div>
+
+    <div class="car-card" data-name="Chevrolet Tahoe">
+      <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a">
+      <h3>2020 Chevrolet Tahoe</h3>
+      <p>$41,200</p>
+      <button onclick="bookTestDrive('Chevrolet Tahoe')">Schedule Test Drive</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <p><strong>Phone:</strong> (504)-911-6767</p>
+  <p><strong>Address:</strong> 1600 Pennsylvania Ave NW, Washington, DC 20500</p>
+
+  <h3>Send Us a Message</h3>
+  <input type="text" placeholder="Your Name">
+  <input type="email" placeholder="Your Email">
+  <input type="text" placeholder="Message">
+  <button onclick="sendMessage()">Send Message</button>
+</div>
+
+<footer>
+  <p>© 2026 Spongebob’s Dealer</p>
+</footer>
+
+<script>
+function searchCars() {
+  let input = document.getElementById('search').value.toLowerCase();
+  let cars = document.getElementsByClassName('car-card');
+
+  for (let i = 0; i < cars.length; i++) {
+    let name = cars[i].getAttribute('data-name').toLowerCase();
+    cars[i].style.display = name.includes(input) ? "" : "none";
+  }
+}
+
+function bookTestDrive(car) {
+  alert("Test drive scheduled for " + car + "!");
+}
+
+function sendMessage() {
+  alert("Message sent! We will contact you soon.");
+}
+</script>
+
+</body>
+</html>
